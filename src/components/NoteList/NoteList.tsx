@@ -1,7 +1,7 @@
 import type { Note } from "../../types/note"
 import css from "./NoteList.module.css"
 interface NoteListProps {
-  notes: Note[],
+  notes?: Note[],
   loading: boolean
 }
 const NoteList: React.FC<NoteListProps> = ({notes, loading}) => {

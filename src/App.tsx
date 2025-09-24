@@ -5,12 +5,12 @@ import { fetchNotes } from "./services/noteService"
 import NoteList from "./components/NoteList/NoteList"
 function App() {
 const [searchQuery, setSearchQuery] = useState("personal")
-  const {data: notes, isFetching} = useQuery({
+  const {data, isFetching} = useQuery({
     queryKey: ['notes', searchQuery],
     queryFn: () => fetchNotes(searchQuery),
     placeholderData: keepPreviousData
   })
-
+const notes = data ?? [] 
   return (
     <div className={css.app}>
 	<header className={css.toolbar}>

@@ -10,6 +10,7 @@ const res = await api.get<FetchNotesResponse>("/notes", {
         search 
     }
 });
+console.log(res.data)
 return res.data
 }
 
