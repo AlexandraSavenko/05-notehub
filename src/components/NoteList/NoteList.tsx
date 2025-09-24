@@ -5,6 +5,7 @@ interface NoteListProps {
   loading: boolean
 }
 const NoteList: React.FC<NoteListProps> = ({notes, loading}) => {
+
   return (
     <>
     {loading && <p>Wait, please...</p> }

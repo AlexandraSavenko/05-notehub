@@ -10,7 +10,7 @@ const [searchQuery, setSearchQuery] = useState("personal")
     queryFn: () => fetchNotes(searchQuery),
     placeholderData: keepPreviousData
   })
-const notes = data ?? [] 
+const notes = data?.notes ?? [] 
   return (
     <div className={css.app}>
 	<header className={css.toolbar}>

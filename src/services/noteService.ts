@@ -5,11 +5,10 @@ interface FetchNotesResponse {
     notes: Note[]
 }
 export const fetchNotes = async (search: string) => {
-const res = await api.get<FetchNotesResponse>("/notes", {
-    params: {
-        search 
-    }
-});
+    const searchParams: Record<string, string> = {}
+    if(search) searchParams.search = search
+    const query = new URLSearchParams(searchParams)
+const res = await api.get<FetchNotesResponse>(`/notes?${query}`);
 console.log(res.data)
 return res.data
 }
