@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import css from "./Modal.module.css";
 import NoteForm from "../NoteForm/NoteForm";
 
-interface ModalProps {
+export interface ModalProps {
   onClose: () => void;
 }
 
@@ -27,7 +27,7 @@ const Modal = ({ onClose }: ModalProps) => {
         >
           &times;
         </button>
-        <NoteForm/>
+        <NoteForm onClose={onClose}/>
       </div>
     </div>,
     document.body

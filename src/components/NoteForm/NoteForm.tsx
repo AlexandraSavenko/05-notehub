@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { NoteFormValues } from "../../types/note";
 import { createNote } from "../../services/noteService";
+import type { ModalProps } from "../Modal/Modal";
 
 
 const initialState = {
@@ -17,7 +18,8 @@ const NoteSchema = Yup.object().shape({
   content: Yup.string().required("Please add some more details"),
   tag: Yup.string().required("Please, choose one of the tags"),
 });
-const NoteForm = () => {
+
+const NoteForm = ({onClose}: ModalProps) => {
     const queryClient = useQueryClient()
     const mutation = useMutation({
         mutationFn: createNote,
@@ -29,9 +31,9 @@ const NoteForm = () => {
   values: NoteFormValues,
   actions: FormikHelpers<NoteFormValues>
 ) => {
-  console.log(values);
   mutation.mutate(values, {
     onSuccess: () => {
+        onClose()
      actions.resetForm();   
     }
   })
