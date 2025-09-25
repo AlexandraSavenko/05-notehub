@@ -1,5 +1,5 @@
 import api from "../api/api"
-import type { Note } from "../types/note"
+import type { Note, NoteFormValues } from "../types/note"
 
 interface FetchNotesResponse {
     notes: Note[],
@@ -18,8 +18,9 @@ const res = await api.get<FetchNotesResponse>(`/notes?${query}`);
 return res.data
 }
 
-export const createNote = async () => {
-    
+export const createNote = async (newNote: NoteFormValues) => {
+    const res = await api.post<FetchNotesResponse>('/notes', newNote);
+    return res.data
 }
 export const deleteNote = async () => {
     

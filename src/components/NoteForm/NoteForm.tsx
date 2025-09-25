@@ -1,27 +1,42 @@
 import { Formik, Form, Field, ErrorMessage, type FormikHelpers } from "formik";
 import css from "./NoteForm.module.css";
 import * as Yup from "yup";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import type { NoteFormValues } from "../../types/note";
+import { createNote } from "../../services/noteService";
 
-interface NoteFormValues {
-    title: string,
-  content: string,
-  tag: string,
-}
+
 const initialState = {
   title: "",
   content: "",
   tag: "",
 };
-const handleSubmit = (values: NoteFormValues, actions: FormikHelpers<NoteFormValues>) => {
-console.log(values)
-actions.resetForm()
-};
+
 const NoteSchema = Yup.object().shape({
   title: Yup.string().required("Please give your note a title"),
   content: Yup.string().required("Please add some more details"),
-  tag: Yup.string().required("Every note should have a tag"),
+  tag: Yup.string().required("Please, choose one of the tags"),
 });
 const NoteForm = () => {
+    const queryClient = useQueryClient()
+    const mutation = useMutation({
+        mutationFn: createNote,
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: ['notes']})
+        }
+    })
+    const handleSubmit = (
+  values: NoteFormValues,
+  actions: FormikHelpers<NoteFormValues>
+) => {
+  console.log(values);
+  mutation.mutate(values, {
+    onSuccess: () => {
+     actions.resetForm();   
+    }
+  })
+  
+};
   return (
     <Formik
       initialValues={initialState}
@@ -37,7 +52,8 @@ const NoteForm = () => {
 
         <div className={css.formGroup}>
           <label htmlFor="content">Content</label>
-          <Field as="textarea"
+          <Field
+            as="textarea"
             id="content"
             name="content"
             rows={8}
