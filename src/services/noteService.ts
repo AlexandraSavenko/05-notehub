@@ -22,6 +22,7 @@ export const createNote = async (newNote: NoteFormValues) => {
     const res = await api.post<FetchNotesResponse>('/notes', newNote);
     return res.data
 }
-export const deleteNote = async () => {
-    
+export const deleteNote = async (noteId: string) => {
+     const res = await api.delete(`/notes/${noteId}`);
+    return res.data
 }
