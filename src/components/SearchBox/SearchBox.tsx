@@ -1,7 +1,8 @@
+import type { Dispatch, SetStateAction } from "react"
 import css from "./SearchBox.module.css"
 
 interface SearchBoxProps {
-  onChange: () => void
+  onChange: Dispatch<SetStateAction<string>>
 }
 const SearchBox = ({onChange}: SearchBoxProps) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

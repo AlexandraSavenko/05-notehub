@@ -8,7 +8,7 @@ import Modal from "./components/Modal/Modal"
 import SearchBox from "./components/SearchBox/SearchBox"
 import { useDebounce } from 'use-debounce';
 function App() {
-const [searchQuery, setSearchQuery] = useState("")
+const [searchQuery, setSearchQuery] = useState<string>("")
 const [searchValue] = useDebounce(searchQuery, 1000);
 const [isModalOpen, setIsModalOpen] = useState(false)
 const [page, setPage] = useState(1)
