@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { Note } from "../../types/note";
 import css from "./NoteList.module.css";
 import { deleteNote } from "../../services/noteService";
+import Loader from "../Loader/Loader";
 interface NoteListProps {
   notes?: Note[];
   loading: boolean;
@@ -23,7 +24,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading }) => {
   }
   return (
     <>
-      {loading && <p>Wait, please...</p>}
+      {loading && <Loader/>}
       {notes && (
         <ul className={css.list}>
           {notes.map((note) => (
