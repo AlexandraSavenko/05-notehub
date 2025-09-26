@@ -10,7 +10,7 @@ import type { ModalProps } from "../Modal/Modal";
 const initialState = {
   title: "",
   content: "",
-  tag: "",
+  tag: "Todo",
 };
 
 const NoteSchema = Yup.object().shape({
