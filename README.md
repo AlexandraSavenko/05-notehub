@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+NoteHub 📝
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple notes application built with React, featuring search, pagination, and form validation.
+Developed in two days as a practice project.
 
-Currently, two official plugins are available:
+🚀 Key Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔍 Search with Debounce — optimized input handling using use-debounce.
 
-## React Compiler
+⚡ Data Fetching & Caching — powered by TanStack Query for server state management.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+🪟 Portals — clean and accessible modal implementation with React Portals.
 
-## Expanding the ESLint configuration
+✅ Form Handling & Validation — using Formik with Yup for schema validation.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+📄 Pagination — easy navigation through notes list with react-paginate.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🗑️ CRUD Operations — create, read, update, and delete notes via backend API.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🛠️ Tech Stack:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+React + TypeScript
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+TanStack Query
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Formik + Yup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Axios for API requests
+
+React Portals
+
+React Paginate
+
+CSS Modules
+
+📂 Project Structure
+src/
+ ├─ components/    # UI components (NoteList, Pagination, Modal, etc.)
+ ├─ services/      # API requests (Axios)
+ ├─ hooks/         # Custom hooks
+ ├─ styles/        # CSS Modules
+ └─ App.tsx        # Root component
+
+⚙️ Installation & Setup
+
+Clone the repo:
+
+git clone https://github.com/your-username/notehub.git
+cd notehub
+
+
+Install dependencies:
+
+npm install
+
+
+Create a .env file and configure your API base URL:
+
+VITE_API_URL=https://notehub-public.goit.study/api
+
+
+Run the project:
+
+npm run dev
