@@ -57,7 +57,10 @@ npm install
 Create a .env file and configure your API base URL:
 
 VITE_API_URL=https://notehub-public.goit.study/api
+VITE_API_TOKEN=your_token_here
 
+⚠️ The token is provided when registering in Swagger. Without it, requests will fail.
+Get the token here: https://notehub-public.goit.study/api/docs
 
 Run the project:
 
