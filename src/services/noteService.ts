@@ -6,12 +6,12 @@ interface FetchNotesResponse {
     totalPages: number
 }
 interface FetchNotesParams {
-    searchQuery: string,
+    searchValue: string,
     page: number
 }
-export const fetchNotes = async ({searchQuery, page}: FetchNotesParams): Promise<FetchNotesResponse> => {
+export const fetchNotes = async ({searchValue, page}: FetchNotesParams): Promise<FetchNotesResponse> => {
     const searchParams: Record<string, string> = {}
-    if(searchQuery) searchParams.search = searchQuery
+    if(searchValue) searchParams.search = searchValue
     if(page) searchParams.page = page.toString()
     const query = new URLSearchParams(searchParams)
 const res = await api.get<FetchNotesResponse>(`/notes?${query}`);
